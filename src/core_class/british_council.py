@@ -65,6 +65,6 @@ class BritishCouncil(ScholarShipExtractor):
                 except Exception as e:
                     print(e)
                     error_count += 1
-        self.dynamic_html.save_HTML(all_data_raw_html)
+        self.dynamic_html.save_HTML(all_data_raw_html,"british_council.html")
         file_helper.write_output_file(all_data_objects)
         print(f"ERROR COUNT {error_count}")

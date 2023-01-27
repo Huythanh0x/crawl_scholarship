@@ -89,6 +89,6 @@ class Scholars4Dev(ScholarShipExtractor):
                     print(e)
                     error_count += 1
                     # raise e
-        self.dynamic_html.save_HTML(all_data_raw_html)
+        self.dynamic_html.save_HTML(all_data_raw_html,"scholars4dev.html")
         file_helper.write_output_file(all_data_objects)
         print(f"ERROR COUNT {error_count}")

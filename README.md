@@ -1,4 +1,4 @@
-# CRAWL SCHOLARSHIP DATA FROM https://search-study-uk.britishcouncil.org
+# CRAWL SCHOLARSHIP in the UK from some websites
 
 ### Structure
 - `output`: csv, json and excel data

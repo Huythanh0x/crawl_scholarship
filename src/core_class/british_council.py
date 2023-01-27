@@ -8,10 +8,11 @@ from base_class.scholarship_extractor import ScholarShipExtractor
 
 class BritishCouncil(ScholarShipExtractor):
     def __init__(self) -> None:
+        self.file_name = "british_council"
         self.BASE_URL = "https://search-study-uk.britishcouncil.org"
         self.SEACRH_ADDRESS = "/course/search-results.html?"
         self.SEARCH_PARAMETERS = "onlineFlag=Y&OnCampusNowFlag=Y&OnCampusLaterFlag=Y&"
-        self.NUMBER_OF_PAGE = 3
+        self.NUMBER_OF_PAGE = 30
         self.dynamic_html = DynamicHTML(["https://css.content-hci.com/study-cont/studyuk/css/client_main_24012023.css", "https://css.content-hci.com/study-cont/studyuk/css/hc_course_finder__15112022.css", "https://css.content-hci.com/study-cont/studyuk/css/hc_main_24012023.css", "https://images1.content-hci.com/study-cont/studyuk/img/clnt_imgs/favicons/favicons.ico", "https://css.content-hci.com/study-cont/studyuk/css/https/hc_embedded_objects_from_cdn_absolute_path__13072022.css"])
     def extract_data_from_html(self, html):
         list_scholarship_objects = []
@@ -65,6 +66,6 @@ class BritishCouncil(ScholarShipExtractor):
                 except Exception as e:
                     print(e)
                     error_count += 1
-        self.dynamic_html.save_HTML(all_data_raw_html,"british_council.html")
-        file_helper.write_output_file(all_data_objects)
+        self.dynamic_html.save_HTML(all_data_raw_html,f"{self.file_name}")
+        file_helper.write_output_file(all_data_objects,self.file_name)
         print(f"ERROR COUNT {error_count}")

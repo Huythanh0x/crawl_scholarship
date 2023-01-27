@@ -8,6 +8,7 @@ from base_class.scholarship_extractor import ScholarShipExtractor
 
 class Scholars4Dev(ScholarShipExtractor):
     def __init__(self) -> None:
+        self.file_name = "scholars4dev"
         self.BASE_URL = "https://www.scholars4dev.com"
         self.SEACRH_ADDRESS = "/category/country/europe-scholarships/uk-scholarships"
         self.SEARCH_PARAMETERS = ""
@@ -89,6 +90,6 @@ class Scholars4Dev(ScholarShipExtractor):
                     print(e)
                     error_count += 1
                     # raise e
-        self.dynamic_html.save_HTML(all_data_raw_html,"scholars4dev.html")
-        file_helper.write_output_file(all_data_objects)
+        self.dynamic_html.save_HTML(all_data_raw_html,f"{self.file_name}")
+        file_helper.write_output_file(all_data_objects,self.file_name)
         print(f"ERROR COUNT {error_count}")

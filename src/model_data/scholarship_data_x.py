@@ -12,7 +12,7 @@ class ScholarshipDataX():
         self.scholarship_value = scholarship_value
         self.eligibility = eligibility
         self.application_instructions = application_instructions
-        self.website = website
+        self.website = "https://tamian.uk/contact-us/"
 
     def to_dict_object(self):
         return dict({"scholarship_name": self.scholarship_name, "college_name": self.college_name, "deadline": self.deadline, "campus": self.campus, "course_starts": self.course_starts, "host_institution": self.host_institution, "level_field_of_study": self.level_field_of_study, "number_of_scholarships": self.number_of_scholarships, "target_group": self.target_group, "scholarship_value": self.scholarship_value, "eligibility": self.eligibility, "application_instructions": self.application_instructions, "website": self.website})

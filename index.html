@@ -1,0 +1,70 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Scholarships List</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="scholarships"></div>
+</body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .card {
+    width: 450px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 20px;
+    padding: 20px;
+    text-align: left;
+}
+
+.card h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.card p {
+    margin-bottom: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+</style>
+<script>
+    fetch('https://raw.githubusercontent.com/Huythanh0x/crawl_scholarship/master/output/scholars4dev.json')
+        .then(res => res.json())
+        .then(data => {
+            let output = '';
+            data.results.forEach(scholarship => {
+                output += `
+        <div class="card">
+          <h2>${scholarship.scholarship_name}</h2>
+          <p><b>College Name:</b> ${scholarship.college_name}</p>
+          <p><b>Deadline:</b> ${scholarship.deadline}</p>
+          <p><b>Campus:</b> ${scholarship.campus}</p>
+          <p><b>Starts:</b> ${scholarship.course_starts}</p>
+          <p><b>Host Institution:</b> ${scholarship.host_institution}</p>
+          <p><b>Field of Study:</b> ${scholarship.level_field_of_study}</p>
+          <p><b>Target Group:</b> ${scholarship.target_group}</p>
+          <p><b>Value:</b> ${scholarship.scholarship_value}</p>
+          <p><b>Eligibility:</b> ${scholarship.eligibility}</p>
+          <p><a href="${scholarship.website}" target="_blank">Liên hệ Tamian UK Ltd để được tư vấn học bổng du học Anh miễn phí</a></p>
+        </div>
+      `;
+            });
+            document.getElementById('scholarships').innerHTML = output;
+        })
+        .catch(err => console.log(err));
+</script>
+</html>
